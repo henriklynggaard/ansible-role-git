@@ -1,0 +1,12 @@
+---
+git_username: ""
+git_email: ""
+
+git_packages:
+ - git
+ - gitg
+
+git_alias: []
+git_config: []
+git_repository: []
+

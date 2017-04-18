@@ -1,0 +1,37 @@
+---
+
+- name: Install Git
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ git_packages }}"
+
+- name: Configure Git
+  git_config:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    scope: global
+  with_items:
+  - name: user.name
+    value: "{{ git_username }}"
+  - name: user.email
+    value: "{{ git_email }}"
+  - "{{ git_config }}"
+
+
+- name: Set git aliases
+  git_config:
+    name: "alias.{{ item.alias }}"
+    value: "{{ item.value }}"
+    scope: global
+  with_items: "{{ git_alias }}"
+
+- name: Checkout Git repositories
+  git:
+    repo: "{{ item.repo }}"
+    dest: "{{ item.dest }}"
+    version: "{{ item.version|default(omit) }}"
+    update: no
+  with_items: "{{ git_repository }}"
+
+

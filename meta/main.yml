@@ -1,0 +1,18 @@
+galaxy_info:
+  author: Henrik Lynggaard Hansen
+  description: Installs Git and configures personal settings
+
+  license: MIT
+
+  min_ansible_version: 2.1
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+
+  galaxy_tags:
+    - git
+    - workstation
+
+dependencies: []
