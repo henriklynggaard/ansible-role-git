@@ -14,6 +14,8 @@ Role Variables
     git_username: "" 
     git_email: "" 
 
+    git_github_token: (not defined by default, if you set it your ssh key will be registered in github)
+    git_github_key_name: (not defined by default)
     git_packages: 
      - git
      - gitg
@@ -45,6 +47,9 @@ __Example inventory__
     git_username: John Doe 
     git_email: john@example.com 
 
+    git_github_token: 758375934abdc6735345378 
+    git_github_key_name: "My linux machine"
+
     git_alias:
     - alias: st
       vlaue: status -sb
@@ -70,4 +75,5 @@ MIT
 Change log
 ----------
 
+* 1.1: Add support for registering keys in github. You must use Ansible 2.3 or backport the github_key module
 * 1.0: Initial version

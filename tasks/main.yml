@@ -26,6 +26,14 @@
     scope: global
   with_items: "{{ git_alias }}"
 
+- name: Authorize key with GitHub
+  github_key:
+    name: '{{ git_github_key_name }}'
+    token: '{{ git_github_token }}'
+    force: no
+    pubkey: "{{ lookup('file', '/home/{{ workstation_bootstrap_username }}/.ssh/id_rsa.pub') }}"
+  when: git_github_token is defined
+
 - name: Checkout Git repositories
   git:
     repo: "{{ item.repo }}"
